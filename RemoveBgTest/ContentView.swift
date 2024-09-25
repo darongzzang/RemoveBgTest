@@ -33,6 +33,7 @@ struct ContentView: View {
                 Image(uiImage: output)
                     .resizable()
                     .scaledToFit()
+                    .border(Color.black, width: 1)
                     .padding()
             }
             
@@ -42,7 +43,9 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFit()
                     .colorInvert() // 검정-하양으로 보이도록 색상 반전
+                    .border(Color.black, width: 1)
                     .padding()
+                    
             }
             
             Button("누끼 따기") {
