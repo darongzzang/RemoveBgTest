@@ -15,54 +15,63 @@ struct ContentView: View {
     @State private var maskImage: UIImage? = nil // maskImage 상태 변수 추가
     @State private var outputImage: UIImage? = nil // 결과 이미지를 저장할 상태 변수 추가
     
+    
+    
     var body: some View {
-        VStack {
-            Button(action: {
-                showingImagePicker = true
-            }, label: {
-                Text("이미지 선택")
-            })
-            
-            // 선택한 이미지 표시
-            Image(uiImage: image ?? UIImage(named: "cat")!) // 기본 이미지 설정
-                .resizable()
-                .scaledToFit()
-            
-            // 결과 이미지 표시
-            if let output = outputImage {
-                Image(uiImage: output)
+        NavigationStack {
+            VStack {
+                Button(action: {
+                    showingImagePicker = true
+                }, label: {
+                    Text("이미지 선택")
+                })
+                
+                // 선택한 이미지 표시
+                Image(uiImage: image ?? UIImage(named: "cat")!) // 기본 이미지 설정
                     .resizable()
                     .scaledToFit()
-                    .border(Color.black, width: 1)
-                    .padding()
-            }
-            
-            // maskImage 표시
-            if let mask = maskImage { // maskImage가 있을 때만 표시
-                Image(uiImage: mask)
-                    .resizable()
-                    .scaledToFit()
-                    .colorInvert() // 검정-하양으로 보이도록 색상 반전
-                    .border(Color.black, width: 1)
-                    .padding()
+                
+                // 결과 이미지 표시
+                if let output = outputImage {
+                    Image(uiImage: output)
+                        .resizable()
+                        .scaledToFit()
+                        .border(Color.black, width: 1)
+                        .padding()
+                }
+                
+                // maskImage 표시
+                if let mask = maskImage { // maskImage가 있을 때만 표시
+                    Image(uiImage: mask)
+                        .resizable()
+                        .scaledToFit()
+                        .colorInvert() // 검정-하양으로 보이도록 색상 반전
+                        .border(Color.black, width: 1)
+                        .padding()
                     
+                }
+                
+                Button("누끼 따기") {
+                    createSticker()
+                }
+                if let mask = maskImage {
+                    NavigationLink(destination: BrushView(backgroundImage: $maskImage)) {
+                        Text("사진 수정하러 가기")
+                    }
+                }
             }
-            
-            Button("누끼 따기") {
-                createSticker()
+            .sheet(isPresented: $showingImagePicker) {
+                ImagePicker(image: $image)
             }
+            .padding()
         }
-        .sheet(isPresented: $showingImagePicker) {
-            ImagePicker(image: $image)
-        }
-        .padding()
     }
     
     // MARK: - Private
     
     private func createSticker() {
         var isLoading = true
-        guard let inputImage = CIImage(image: image ?? UIImage(named: "cat")!) else {
+        guard let inputImage = CIImage(image: image ?? UIImage(named: "cat") ?? UIImage()) else {
             print("Failed to create CIImage")
             return
         }
@@ -81,6 +90,7 @@ struct ContentView: View {
             }
             
             let outputImage = apply(mask: maskImage, to: inputImage)
+            
             let image = render(ciImage: outputImage)
             DispatchQueue.main.async {
                 self.outputImage = image // 결과 이미지 상태 변수 업데이트
