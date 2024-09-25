@@ -11,6 +11,7 @@
 		897D56D92CA3EE520049E193 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897D56D82CA3EE520049E193 /* ContentView.swift */; };
 		897D56DB2CA3EE550049E193 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 897D56DA2CA3EE550049E193 /* Assets.xcassets */; };
 		897D56DE2CA3EE550049E193 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 897D56DD2CA3EE550049E193 /* Preview Assets.xcassets */; };
+		897D56E52CA3F0390049E193 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897D56E42CA3F0390049E193 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		897D56D82CA3EE520049E193 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		897D56DA2CA3EE550049E193 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		897D56DD2CA3EE550049E193 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		897D56E42CA3F0390049E193 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				897D56D82CA3EE520049E193 /* ContentView.swift */,
 				897D56DA2CA3EE550049E193 /* Assets.xcassets */,
 				897D56DC2CA3EE550049E193 /* Preview Content */,
+				897D56E42CA3F0390049E193 /* ImagePicker.swift */,
 			);
 			path = RemoveBgTest;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				897D56E52CA3F0390049E193 /* ImagePicker.swift in Sources */,
 				897D56D92CA3EE520049E193 /* ContentView.swift in Sources */,
 				897D56D72CA3EE520049E193 /* RemoveBgTestApp.swift in Sources */,
 			);
