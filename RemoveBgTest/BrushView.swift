@@ -71,7 +71,7 @@ struct BrushView: View {
                             self.currentLine = Line(points: [], color: selectedColor, lineWidth: thickness)
                         })
                 )
-            }
+            }.frame(width: 400, height: 400)
             
             Slider(value: $thickness, in: 1...20) {
                 Text("Thickness")
@@ -90,30 +90,56 @@ struct BrushView: View {
                                 Text("Go to Brush View")
                             }
             Button("Save Image") {
-                        let image = self.asImage()
+                let image = self.zStackAsImage()
                         saveImageToPhotos(image: image)
                         savedImage = image
                     }
         }
     }
+    // ZStack의 내용을 이미지로 변환하는 메서드
+        private func zStackAsImage() -> UIImage {
+            let zStackView = ZStack {
+                Image(uiImage: backgroundImage ?? UIImage(named: "mask")!)
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                Canvas { context, size in
+                    for line in lines {
+                        var path = Path()
+                        path.addLines(line.points)
+                        context.stroke(path, with: .color(line.color), lineWidth: line.lineWidth)
+                    }
+                }
+                .background(Color.clear)
+                .frame(minWidth: 400, minHeight: 400)
+            }
+            
+            return zStackView.asImage()
+        }
 }
 
 extension View {
-    ///뷰를 이미지로 추출하는 함수
+    /// ZStack 안의 요소들만 이미지로 추출하는 함수
     func asImage() -> UIImage {
         let controller = UIHostingController(rootView: self)
         let view = controller.view
 
-        let targetSize = controller.sizeThatFits(in: CGSize(width: 400, height: 400)) // 원하는 크기로 설정
+        // ZStack의 크기를 설정합니다.
+        let targetSize = CGSize(width: 400, height: 400)
         view?.bounds = CGRect(origin: .zero, size: targetSize)
         view?.backgroundColor = .clear
 
+        // UIGraphicsImageRenderer를 사용하여 이미지를 렌더링합니다.
         let renderer = UIGraphicsImageRenderer(size: targetSize)
         return renderer.image { _ in
+            // ZStack의 내용을 그립니다.
             view?.drawHierarchy(in: view!.bounds, afterScreenUpdates: true)
         }
     }
+    
+    
 }
+
 
 func saveImageToPhotos(image: UIImage) {
     ///사용자 갤러리에 사진을 저장하는 함수
