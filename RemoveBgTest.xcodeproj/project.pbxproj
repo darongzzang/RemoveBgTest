@@ -15,6 +15,7 @@
 		897D57092CA45FFC0049E193 /* BrushView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897D57082CA45FFC0049E193 /* BrushView.swift */; };
 		897D570B2CA460250049E193 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897D570A2CA460250049E193 /* Constants.swift */; };
 		897D570D2CA4603B0049E193 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897D570C2CA4603B0049E193 /* ColorPickerView.swift */; };
+		897D570F2CA58F890049E193 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897D570E2CA58F890049E193 /* ResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		897D57082CA45FFC0049E193 /* BrushView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushView.swift; sourceTree = "<group>"; };
 		897D570A2CA460250049E193 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		897D570C2CA4603B0049E193 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		897D570E2CA58F890049E193 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				897D57082CA45FFC0049E193 /* BrushView.swift */,
 				897D570A2CA460250049E193 /* Constants.swift */,
 				897D570C2CA4603B0049E193 /* ColorPickerView.swift */,
+				897D570E2CA58F890049E193 /* ResultView.swift */,
 			);
 			path = RemoveBgTest;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 				897D570D2CA4603B0049E193 /* ColorPickerView.swift in Sources */,
 				897D57092CA45FFC0049E193 /* BrushView.swift in Sources */,
 				897D56D92CA3EE520049E193 /* ContentView.swift in Sources */,
+				897D570F2CA58F890049E193 /* ResultView.swift in Sources */,
 				897D56D72CA3EE520049E193 /* RemoveBgTestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +295,7 @@
 				DEVELOPMENT_TEAM = 8D32S9PLZ6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "이 앱이 사진 앨범에 이미지를 저장할 수 있도록 허용해 주세요.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -320,6 +325,7 @@
 				DEVELOPMENT_TEAM = 8D32S9PLZ6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "이 앱이 사진 앨범에 이미지를 저장할 수 있도록 허용해 주세요.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -54,7 +54,7 @@ struct ContentView: View {
                 Button("누끼 따기") {
                     createSticker()
                 }
-                if let mask = maskImage {
+                if maskImage != nil {
                     NavigationLink(destination: BrushView(backgroundImage: $maskImage)) {
                         Text("사진 수정하러 가기")
                     }
