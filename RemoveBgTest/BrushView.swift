@@ -19,6 +19,7 @@ struct BrushView: View {
     @State private var selectedColor: Color = .black
     @State private var thickness: Double = 0.0
     @Binding var backgroundImage: UIImage?
+    @Binding var originalImage: UIImage?
     @State var savedImage: UIImage?
     
     @State private var currentZoom = 0.0
@@ -85,7 +86,7 @@ struct BrushView: View {
                 .onChange(of: selectedColor) { newColor in
                     currentLine.color = newColor
                 }
-            NavigationLink(destination: ResultView(image: $savedImage)) {
+            NavigationLink(destination: ResultView(newMaskImage: $savedImage, originalImage: $originalImage)) {
                                 Text("Go to Brush View")
                             }
             Button("Save Image") {
@@ -98,6 +99,7 @@ struct BrushView: View {
 }
 
 extension View {
+    ///뷰를 이미지로 추출하는 함수
     func asImage() -> UIImage {
         let controller = UIHostingController(rootView: self)
         let view = controller.view
@@ -114,7 +116,8 @@ extension View {
 }
 
 func saveImageToPhotos(image: UIImage) {
-    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+    ///사용자 갤러리에 사진을 저장하는 함수
+//    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
     return
 }
 

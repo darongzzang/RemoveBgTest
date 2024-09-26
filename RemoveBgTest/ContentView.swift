@@ -10,7 +10,7 @@ import Vision
 import CoreImage.CIFilterBuiltins
 
 struct ContentView: View {
-    @State private var image: UIImage?
+    @State var image: UIImage?
     @State private var showingImagePicker: Bool = false
     @State private var maskImage: UIImage? = nil // maskImage 상태 변수 추가
     @State private var outputImage: UIImage? = nil // 결과 이미지를 저장할 상태 변수 추가
@@ -55,7 +55,7 @@ struct ContentView: View {
                     createSticker()
                 }
                 if maskImage != nil {
-                    NavigationLink(destination: BrushView(backgroundImage: $maskImage)) {
+                    NavigationLink(destination: BrushView(backgroundImage: $maskImage, originalImage: $image)) {
                         Text("사진 수정하러 가기")
                     }
                 }
